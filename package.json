@@ -1,0 +1,14 @@
+{
+  "name": "tabletodiv",
+  "version": "1.0.0",
+  "description": "Convert Table to Div",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@danieljs Daniel Villanueva",
+  "license": "ISC"
+}
