@@ -1,29 +1,185 @@
-.table{
+.caption, .col, .colgroup, .table, .tbody, .td, .tfoot, .th, .thead, .tr {
+	unicode-bidi: isolate;
+}
+.table {
 	display: table;
-	width: 100%;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
 }
-.row {
+.table[align="left"] {
+	float: left;
+}
+.table[align="right"] {
+	float: right;
+	text-align: start;
+}
+.table[rules] { 
+	border-width: thin;
+	border-style: hidden;
+}
+.table[border]:not([border=""]) {
+	border-width: thin;
+	border-style: outset;
+}
+.table[frame] {
+	border: thin hidden;
+}
+.table[frame="void"]	 { border-style: hidden; }
+.table[frame="above"]	{ border-style: outset hidden hidden hidden; }
+.table[frame="below"]	{ border-style: hidden hidden outset hidden; }
+.table[frame="lhs"]		{ border-style: hidden hidden hidden outset; }
+.table[frame="rhs"]		{ border-style: hidden outset hidden hidden; }
+.table[frame="hsides"] { border-style: outset hidden; }
+.table[frame="vsides"] { border-style: hidden outset; }
+.table[frame="box"],
+.table[frame="border"] { border-style: outset; }
+.table[border]:not([border=""]) > * > .tr > .td,
+.table[border]:not([border=""]) > * > .tr > .th,
+.table[border]:not([border=""]) > * > .td,
+.table[border]:not([border=""]) > * > .th,
+.table[border]:not([border=""]) > .td,
+.table[border]:not([border=""]) > .th
+{
+	border-width: thin;
+	border-style: double;
+}
+.table[rules]:not([rules="none"]):not([rules=""]) {
+	border-collapse: collapse;
+}
+.table[rules]:not([rules=""])> .tr > .td,
+.table[rules]:not([rules=""])> * > .tr > .td,
+.table[rules]:not([rules=""])> .tr > .th,
+.table[rules]:not([rules=""])> * > .tr > .th,
+.table[rules]:not([rules=""])> .td,
+.table[rules]:not([rules=""])> .th
+{
+	border-width: thin;
+	border-style: none;
+}
+.table[rules][rules="none"]	> .tr > .td,
+.table[rules][rules="none"] > * > .tr > .td,
+.table[rules][rules="none"] > .tr > .th,
+.table[rules][rules="none"] > * > .tr > .th,
+.table[rules][rules="none"] > .td,
+.table[rules][rules="none"] > .th
+{
+	border-width: thin;
+	border-style: none;
+}
+.table[rules][rules="all"] > .tr > .td,
+.table[rules][rules="all"] > * > .tr > .td,
+.table[rules][rules="all"] > .tr > .th,
+.table[rules][rules="all"] > * > .tr > .th,
+.table[rules][rules="all"] > .td,
+.table[rules][rules="all"] > .th 
+{
+	border-width: thin;
+	border-style: solid;
+}
+.table[rules][rules="rows"] > .tr,
+.table[rules][rules="rows"] > * > .tr {
+	border-block-start-width: thin;
+	border-block-end-width: thin;
+	border-block-start-style: solid;
+	border-block-end-style: solid;
+}
+.table[rules][rules="cols"] > .tr > .td,
+.table[rules][rules="cols"] > * > .tr > .td,
+.table[rules][rules="cols"] > .tr > .th,
+.table[rules][rules="cols"] > * > .tr > .th {
+	border-inline-start-width: thin;
+	border-inline-end-width: thin;
+	border-inline-start-style: solid;
+	border-inline-end-style: solid;
+}
+.table[rules][rules="groups"] > colgroup {
+	border-inline-start-width: thin;
+	border-inline-end-width: thin;
+	border-inline-start-style: solid;
+	border-inline-end-style: solid;
+}
+.table[rules][rules="groups"] > tfoot,
+.table[rules][rules="groups"] > thead,
+.table[rules][rules="groups"] > tbody {
+	border-block-start-width: thin;
+	border-block-end-width: thin;
+	border-block-start-style: solid;
+	border-block-start-style: solid;
+}
+.caption {
+	display: table-caption;
+	text-align: center;
+}
+.table[align="center"] > .caption {
+	margin-inline-start: auto;
+	margin-inline-end: auto;
+}
+
+.table[align="center"] > .caption[align="left"]:dir(ltr) {
+	margin-inline-end: 0;
+}
+.table[align="center"] > .caption[align="left"]:dir(rtl) {
+	margin-inline-start: 0;
+}
+.table[align="center"] > .caption[align="right"]:dir(ltr) {
+	margin-inline-start: 0;
+}
+.table[align="center"] > .caption[align="right"]:dir(rtl) {
+	margin-inline-end: 0;
+}
+.tr {
 	display: table-row;
+	vertical-align: inherit;
 }
-.heading {
-	background-color: #EEE;
-	display: table-header-group;
+.col {
+	display: table-column;
 }
-.cell, .head {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
+.colgroup {
+	display: table-column-group;
 }
-.heading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.foot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.body {
+.tbody {
 	display: table-row-group;
+	vertical-align: middle;
+}
+.thead {
+	display: table-header-group;
+	vertical-align: middle;
+}
+.tfoot {
+	display: table-footer-group;
+	vertical-align: middle;
+}
+.table > .tr {
+	vertical-align: middle;
+}
+.td {
+	display: table-cell;
+	vertical-align: inherit;
+	text-align: inherit; 
+	padding: 1px;
+}
+.th {
+	display: table-cell;
+	vertical-align: inherit;
+	font-weight: bold;
+	padding: 1px;
+}
+.tr > .form:-moz-is-html, .tbody > .form:-moz-is-html,
+.thead > .form:-moz-is-html, .tfoot > .form:-moz-is-html,
+.table > .form:-moz-is-html {
+	display: none !important;
+}
+.table[bordercolor] > .tbody,
+.table[bordercolor] > .thead,
+.table[bordercolor] > .tfoot,
+.table[bordercolor] > .col,
+.table[bordercolor] > .colgroup,
+.table[bordercolor] > .tr,
+.table[bordercolor] > * > .tr,
+.table[bordercolor]	> .tr > .td,
+.table[bordercolor] > * > .tr > .td,
+.table[bordercolor]	> .tr > .th,
+.table[bordercolor] > * > .tr > .th {
+	border-color: inherit;
 }
